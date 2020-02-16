@@ -1,6 +1,7 @@
 <html lang="en">
     <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>AngularJS</title>
     
@@ -23,39 +24,34 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     
-    <script>
+    <script defer>
         var app= angular.module('myModule',[]);
 
-        app.controller('myController',function($scope){
-            $scope.name='Anna';
-            $scope.surname='Jot';
-            $scope.errorInfo= "Podaj proszę poprawną liczbę"
-            $scope.val1 = 0;
-            $scope.val2 = 0;
-            $scope.sum = 0;
-            $scope.change= function(){
-        
-                $scope.sum = $scope.val1 + $scope.val2;
-                $scope.result = (typeof $sc)
-                console.log($scope.sum);
-                
-
-               return   $scope.sum = (isNaN($scope.sum)) ? $scope.errorInfo : $scope.sum;
+        app.controller('myController',['$scope',function(scope){
+            scope.name='Anna';
+            scope.surname='Jot';
+            scope.errorInfo= "Podaj proszę poprawną liczbę"
+            scope.val1 = 0;
+            scope.val2 = 0;
+            scope.sum = 0;
+            scope.init = function (){
+                alert('helo moto');
             }
-        });
+            scope.change= function(){
+        
+                this.sum = this.val1 + this.val2;
+                return this.sum = (isNaN(this.sum)) ? this.errorInfo : this.sum;
+            }
+        }]);
         app.directive('myDirective',function(){
     
             return {
                 template: '<h2>Hello2</h2>'
             }
         })
+
+    
     </script>
     
-    
-    
-    
-    
-    
-     
-    
-    </body></html>
+    </body>
+    </html>
