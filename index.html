@@ -1,33 +1,61 @@
-<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    
+    <title>AngularJS</title>
+    
+    </head>
+    
+    <body>
+    
+    <div ng-app="myModule" ng-controller="myController">
+    
+        <label>wpisz coś: <input type="text" ng-model="text"></label>
+        <p>twój tekst: {{text}}</p>
+        <p>{{surname}}</p>
+        
+        <div my-directive=""></div>
 
-<html lang="en" ng-app>
+        <label>dodaj: <input type="number" ng-model="val1" ng-change="change()"></label>
+        <label>   z : <input type="number" ng-model="val2" ng-change="change()"></label>
+        <p>suma to: {{sum}}</p>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    
+    <script>
+        var app= angular.module('myModule',[]);
 
-<head>
+        app.controller('myController',function($scope){
+            $scope.name='Anna';
+            $scope.surname='Jot';
+            $scope.errorInfo= "Podaj proszę poprawną liczbę"
+            $scope.val1 = 0;
+            $scope.val2 = 0;
+            $scope.sum = 0;
+            $scope.change= function(){
+        
+                $scope.sum = $scope.val1 + $scope.val2;
+                $scope.result = (typeof $sc)
+                console.log($scope.sum);
+                
 
-<meta charset="utf-8">
-
-<title>AngularJS</title>
-
-</head>
-
-<body>
-
-<p>
-
-Przykładowa moja super aplikacja na  devie{{'AngularJS' + '!'}}
-
-</p>
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-
-</body>
-
-</html>
-
- 
-
-Omówmy teraz za co odpowiadają poszczególne linijki kodu.
-
- 
-
-<html ng-app>
+               return   $scope.sum = (isNaN($scope.sum)) ? $scope.errorInfo : $scope.sum;
+            }
+        });
+        app.directive('myDirective',function(){
+    
+            return {
+                template: '<h2>Hello2</h2>'
+            }
+        })
+    </script>
+    
+    
+    
+    
+    
+    
+     
+    
+    </body></html>
